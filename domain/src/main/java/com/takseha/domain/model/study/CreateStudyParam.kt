@@ -4,7 +4,7 @@ data class CreateStudyParam(
     val topic: String,
     val info: String,
     val repositoryName: String,
-    val categoriesId: List<Int>,
+    val categoryIds: List<Int>,
     val status: StudyStatus,
     val cycle: StudyCycle,
     val maximumMember: Int,

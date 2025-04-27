@@ -5,7 +5,7 @@ data class Study(
     val createdDateTime: String,
     val topic: String,
     val info: String,
-    val periodType: StudyCycle,
+    val cycle: StudyCycle,
     val status: StudyStatus,
     val score: Int,
     val rank: Int,

@@ -1,0 +1,20 @@
+package com.takseha.domain.model.study
+
+data class StudyDetail(
+    val id: Int,
+    val studyName: String,
+    val info: String,
+    val cycle: StudyCycle,
+    val status: StudyStatus,
+    val score: Int,
+    val rank: Int,
+    val lastCommitDay: String?,
+    val studyProfileUrl: String,
+    val isAppliedStudy: Boolean,
+    val isLeader: Boolean,
+    val isBookmarked: Boolean,
+    val githubRepoUrl: String,
+    val studyCategoryList: List<String>,
+    val currentMember: Int,
+    val maximumMember: Int
+)

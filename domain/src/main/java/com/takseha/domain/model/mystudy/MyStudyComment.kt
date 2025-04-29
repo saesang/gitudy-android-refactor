@@ -2,7 +2,7 @@ package com.takseha.domain.model.mystudy
 
 data class MyStudyComment (
     val id: Int,
-    val studyInfoId: Int,
+    val studyId: Int,
     val writerName: String,
     val writerProfileUrl: String,
     val content: String,

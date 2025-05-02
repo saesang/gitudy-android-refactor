@@ -6,15 +6,12 @@ import com.takseha.domain.model.study.StudySummary
 
 interface StudyRepository {
     /** 전체 스터디 리스트 조회 */
-    suspend fun getAllStudies(cursorIdx: Long?, limit: Long, sortBy: String): List<StudySummary>
     suspend fun fetchAllStudies(cursorIdx: Long?, limit: Long, sortBy: String): List<StudySummary>
 
     /** 전체 스터디 개수 조회 */
-    suspend fun getTotalStudyCount(): Int
     suspend fun fetchTotalStudyCount(): Int
 
     /** 스터디 랭킹 조회 */
-    suspend fun getStudyRank(studyId: Int): Int
     suspend fun fetchStudyRank(studyId: Int): Int
 
     /** 스터디 북마크 조회 */
@@ -22,7 +19,6 @@ interface StudyRepository {
     suspend fun fetchStudyBookmark(studyId: Int): Boolean
 
     /** 스터디 상세 정보 조회 */
-    suspend fun getStudyDetail(studyId: Int): StudyDetail
     suspend fun fetchStudyDetail(studyId: Int): StudyDetail
 
     /** 스터디 생성 */

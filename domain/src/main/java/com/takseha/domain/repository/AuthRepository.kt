@@ -9,7 +9,7 @@ interface AuthRepository {
     suspend fun getLoginPages(): SignInPageInfo
     suspend fun fetchLoginPages(): SignInPageInfo
 
-    /** 사용자 세션이 유효한지 확인 */
+    /** 사용자 세션이 유효한 지 확인 */
     suspend fun isUserLoggedIn(): Boolean
 
     /** 로그인 */

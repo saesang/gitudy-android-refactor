@@ -1,4 +1,4 @@
-package com.takseha.domain.usecase
+package com.takseha.domain.usecase.splash
 
 import com.takseha.domain.repository.AuthRepository
 

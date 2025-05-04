@@ -10,7 +10,7 @@ import com.takseha.domain.model.mystudy.applicant.StudyApplicant
 interface MyStudyRepository {
     /** 마이스터디 리스트 조회 */
     suspend fun fetchMyStudies(cursorIdx: Long?, limit: Long, sortBy: String): List<MyStudySummary>
-    /** 스터디 별 마감일 임박 Todo 정보 조회 */
+    /** 스터디 별 마감일 임박 투두 정보 조회 */
     suspend fun fetchNearestDeadlineTodoInfo(studyId: Int): TodoSummary
 
     /** 마이스터디 개수 조회 */

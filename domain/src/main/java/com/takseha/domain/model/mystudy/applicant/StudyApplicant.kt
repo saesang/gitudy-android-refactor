@@ -1,5 +1,7 @@
 package com.takseha.domain.model.mystudy.applicant
 
+import com.takseha.domain.model.profile.SocialInfo
+
 data class StudyApplicant(
     val id: Int,
     val name: String,

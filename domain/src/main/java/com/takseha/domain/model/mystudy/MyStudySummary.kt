@@ -6,6 +6,5 @@ data class MyStudySummary(
     val score: Int,
     val rank: Int,
     val studyProfileUrl: String,
-    val isLeader: Boolean,
-    val nearestDeadlineTodoInfo: TodoSummary?
+    val isLeader: Boolean
 )

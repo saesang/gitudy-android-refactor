@@ -3,13 +3,8 @@ package com.takseha.domain.repository
 import com.takseha.domain.model.commit.CommitComment
 import com.takseha.domain.model.commit.CommitDetail
 import com.takseha.domain.model.commit.PostCommitCommentParam
-import com.takseha.domain.model.todo.CommitSummary
 
 interface CommitRepository {
-    /** 마이커밋 리스트 조회 */
-    suspend fun getMyCommits(cursorIdx: Long?, limit: Long, studyId: Int): List<CommitSummary>
-    suspend fun fetchMyCommits(cursorIdx: Long?, limit: Long, studyId: Int): List<CommitSummary>
-
     /** 커밋 상세 정보 조회 */
     suspend fun getCommitDetail(studyId: Int, commitId: Int): CommitDetail
     suspend fun fetchCommitDetail(studyId: Int, commitId: Int): CommitDetail

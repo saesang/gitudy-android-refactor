@@ -1,5 +1,6 @@
 package com.takseha.domain.repository
 
+import com.takseha.domain.model.study.Category
 import com.takseha.domain.model.study.CreateStudyParam
 import com.takseha.domain.model.study.StudyDetail
 import com.takseha.domain.model.study.StudySummary
@@ -25,6 +26,9 @@ interface StudyRepository {
     suspend fun createStudy(createStudyParam: CreateStudyParam)
     /** 깃허브 레포지토리 이름 중복 체크 */
     suspend fun checkRepoNameDuplication(repoName: String): Boolean
+    /** 스터디 카테고리 조회 */
+    suspend fun getAllCategories(): List<Category>
+    suspend fun fetchAllCategories(): List<Category>
 
     /** 스터디 신청 */
     suspend fun submitStudyApplication()

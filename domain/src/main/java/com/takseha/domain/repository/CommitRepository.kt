@@ -23,7 +23,7 @@ interface CommitRepository {
     suspend fun postCommitComment(commitId: Int, postCommitCommentParam: PostCommitCommentParam)
 
     /** 커밋 댓글 수정 */
-    suspend fun updateCommitComment(commitId: Int, postCommitCommentParam: PostCommitCommentParam)
+    suspend fun updateCommitComment(commitId: Int, updateCommitCommentParam: PostCommitCommentParam)
 
     /** 커밋 댓글 삭제 */
     suspend fun deleteCommitComment(commitId: Int, commentId: Int)

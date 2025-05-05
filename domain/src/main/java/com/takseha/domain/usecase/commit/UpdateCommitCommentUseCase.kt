@@ -9,6 +9,6 @@ import com.takseha.domain.repository.CommitRepository
 class UpdateCommitCommentUseCase(
     private val commitRepository: CommitRepository
 ) {
-    suspend operator fun invoke(commitId: Int, postCommitCommentParam: PostCommitCommentParam) =
-        commitRepository.updateCommitComment(commitId, postCommitCommentParam)
+    suspend operator fun invoke(commitId: Int, updateCommitCommentParam: PostCommitCommentParam) =
+        commitRepository.updateCommitComment(commitId, updateCommitCommentParam)
 }

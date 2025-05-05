@@ -3,6 +3,7 @@ package com.takseha.domain.repository
 import com.takseha.domain.model.study.Category
 import com.takseha.domain.model.study.CreateStudyParam
 import com.takseha.domain.model.study.StudyDetail
+import com.takseha.domain.model.study.StudyRank
 import com.takseha.domain.model.study.StudySummary
 
 interface StudyRepository {
@@ -13,7 +14,7 @@ interface StudyRepository {
     suspend fun fetchTotalStudyCount(): Int
 
     /** 스터디 랭킹 조회 */
-    suspend fun fetchStudyRank(studyId: Int): Int
+    suspend fun fetchStudyRankAndScore(studyId: Int): StudyRank
 
     /** 스터디 북마크 조회 */
     suspend fun getStudyBookmark(studyId: Int): Boolean

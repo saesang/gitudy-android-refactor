@@ -7,7 +7,7 @@ import com.takseha.domain.model.todo.CommitSummary
 
 interface ProfileRepository {
     /** 사용자 정보 조회 */
-    suspend fun getUserInfo(): UserInfo
+    suspend fun getUserInfo(): UserInfo?
     suspend fun fetchUserInfo(): UserInfo
 
     /** 사용자 정보 업데이트 */

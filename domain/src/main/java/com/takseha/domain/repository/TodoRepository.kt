@@ -1,15 +1,15 @@
 package com.takseha.domain.repository
 
-import com.takseha.domain.model.mystudy.TodoSummary
 import com.takseha.domain.model.todo.CreateTodoParam
 import com.takseha.domain.model.todo.TodoDetail
 
 interface TodoRepository {
     /** 투두 리스트 조회 */
-    suspend fun fetchTodoList(cursorIdx: Long?, limit: Long, studyId: Int): List<TodoSummary>
+    suspend fun getTodoList(cursorIdx: Long?, limit: Long, studyId: Int): List<TodoDetail>?
+    suspend fun fetchTodoList(cursorIdx: Long?, limit: Long, studyId: Int): List<TodoDetail>
 
     /** 투두 상세 정보 조회 */
-    suspend fun getTodoDetail(studyId: Int, todoId: Int): TodoDetail
+    suspend fun getTodoDetail(studyId: Int, todoId: Int): TodoDetail?
     suspend fun fetchTodoDetail(studyId: Int, todoId: Int): TodoDetail
 
     /** 투두 등록 */

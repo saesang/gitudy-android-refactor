@@ -4,7 +4,8 @@ import com.takseha.domain.repository.MyStudyRepository
 import com.takseha.domain.utils.getOrFetch
 
 /**
- * 마이스터디 랭킹/점수 정보 조회
+ * 마감일 임박 투두 정보 조회
+ * : Room 먼저 조회(get) -> null이면 서버에서 조회(fetch)
  */
 class GetNearestDeadlineTodoUseCase(
     private val myStudyRepository: MyStudyRepository

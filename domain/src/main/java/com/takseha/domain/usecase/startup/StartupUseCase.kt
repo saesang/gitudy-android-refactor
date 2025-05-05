@@ -136,13 +136,13 @@ class StartupUseCase(
         )
         val studyItemsDeferred = allStudySummaries.map { summary ->
             async {
-                val rankDeferred = async { studyRepository.fetchStudyRank(summary.id) }
+                val rankAndScoreDeferred = async { studyRepository.fetchStudyRankAndScore(summary.id) }
                 val isBookmarkedDeferred =
                     async { studyRepository.fetchStudyBookmark(summary.id) }
 
                 StudyItem(
                     studySummary = summary,
-                    rank = rankDeferred.await(),
+                    rankAndScore = rankAndScoreDeferred.await(),
                     isBookmarked = isBookmarkedDeferred.await()
                 )
             }

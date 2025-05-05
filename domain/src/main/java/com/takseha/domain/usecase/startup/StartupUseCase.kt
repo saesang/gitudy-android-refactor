@@ -113,10 +113,10 @@ class StartupUseCase(
         )
         val myStudyItemsDeferred = myStudySummaries.map { summary ->
             async {
-                val todo = myStudyRepository.fetchNearestDeadlineTodoInfo(summary.id)
+                val nearestDeadlineTodo = myStudyRepository.fetchNearestDeadlineTodoInfo(summary.id)
                 MyStudyItem(
                     myStudySummary = summary,
-                    nearestDeadlineTodoInfo = todo
+                    nearestDeadlineTodoInfo = nearestDeadlineTodo
                 )
             }
         }

@@ -7,7 +7,7 @@ import com.takseha.domain.model.study.StudySummary
 
 interface StudyRepository {
     /** 전체 스터디 리스트 조회 */
-    suspend fun fetchAllStudies(cursorIdx: Long?, limit: Long, sortBy: String): List<StudySummary>
+    suspend fun fetchAllStudySummaries(cursorIdx: Long?, limit: Long, sortBy: String): List<StudySummary>
 
     /** 전체 스터디 개수 조회 */
     suspend fun fetchTotalStudyCount(): Int

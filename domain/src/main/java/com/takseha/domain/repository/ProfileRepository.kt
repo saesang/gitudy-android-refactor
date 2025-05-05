@@ -18,12 +18,12 @@ interface ProfileRepository {
     suspend fun checkNicknameDuplication(nickname: String): Boolean
 
     /** 마이커밋 리스트 조회 */
-    suspend fun getMyCommits(cursorIdx: Long?, limit: Long, studyId: Int): List<CommitSummary>
-    suspend fun fetchMyCommits(cursorIdx: Long?, limit: Long, studyId: Int): List<CommitSummary>
+    suspend fun getMyCommits(cursorIdx: Long?, limit: Long, studyId: Int?): List<CommitSummary>
+    suspend fun fetchMyCommits(cursorIdx: Long?, limit: Long, studyId: Int?): List<CommitSummary>
 
     /** 스터디 북마크 리스트 조회 */
-    suspend fun getStudyBookmarks(studyId: Int, commitId: Int): List<StudyBookmark>
-    suspend fun fetchStudyBookmarks(studyId: Int, commitId: Int): List<StudyBookmark>
+    suspend fun getStudyBookmarks(cursorIdx: Long?, limit: Long): List<StudyBookmark>
+    suspend fun fetchStudyBookmarks(cursorIdx: Long?, limit: Long): List<StudyBookmark>
 
     /** 스터디 북마크 업데이트 */
     suspend fun updateStudyBookmark(studyId: Int)

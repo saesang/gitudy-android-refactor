@@ -6,7 +6,6 @@ data class StudySummary(
     val daysSinceStart: Int,
     val cycle: StudyCycle,
     val status: StudyStatus,
-    val score: Int,
     val lastCommitDay: String?,
     val studyProfileUrl: String,
     val studyCategoryList: List<String>,

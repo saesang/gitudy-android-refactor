@@ -42,16 +42,14 @@ class StartupUseCase(
             runCatching { myStudyRepository.fetchMyStudyCount() }.getOrNull()
         }
         val myStudiesDeferred = async {
-            runCatching {
-                return@async buildMyStudyItems()
-            }.getOrNull()
+            runCatching { buildMyStudyItems() }.getOrNull()
         }
 
         val totalStudyCountDeferred = async {
             runCatching { studyRepository.fetchTotalStudyCount() }.getOrNull()
         }
         val allStudiesDeferred = async {
-            runCatching { return@async buildAllStudyItems() }.getOrNull()
+            runCatching { buildAllStudyItems() }.getOrNull()
         }
 
         val myCommitsDeferred = async {
@@ -122,7 +120,8 @@ class StartupUseCase(
                 )
             }
         }
-        return@coroutineScope myStudyItemsDeferred.awaitAll()
+
+        myStudyItemsDeferred.awaitAll()
     }
 
     /** 전체스터디 목록 조회
@@ -138,16 +137,17 @@ class StartupUseCase(
         val studyItemsDeferred = allStudySummaries.map { summary ->
             async {
                 val rankDeferred = async { studyRepository.fetchStudyRank(summary.id) }
-                val isBookmarkDeferred =
+                val isBookmarkedDeferred =
                     async { studyRepository.fetchStudyBookmark(summary.id) }
 
                 StudyItem(
                     studySummary = summary,
                     rank = rankDeferred.await(),
-                    isBookmarked = isBookmarkDeferred.await()
+                    isBookmarked = isBookmarkedDeferred.await()
                 )
             }
         }
-        return@coroutineScope studyItemsDeferred.awaitAll()
+
+        studyItemsDeferred.awaitAll()
     }
 }

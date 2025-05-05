@@ -40,6 +40,7 @@ interface MyStudyRepository {
     suspend fun deleteMyStudyComment(studyId: Int, studyCommentId: Int)
 
     /** 스터디 신청자 목록 확인 */
+    suspend fun getStudyApplications(cursorIdx: Long?, limit: Long, studyId: Int): List<StudyApplicant>?
     suspend fun fetchStudyApplications(cursorIdx: Long?, limit: Long, studyId: Int): List<StudyApplicant>
 
     /** 스터디 신청 승인/거절 */

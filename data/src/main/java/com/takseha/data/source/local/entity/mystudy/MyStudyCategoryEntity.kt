@@ -4,8 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "MyStudyCategory")
+@Entity(
+    tableName = "MyStudyCategory",
+    primaryKeys = ["studyId", "category"]
+)
 class MyStudyCategoryEntity(
-    @PrimaryKey val studyId: Int,
+    @ColumnInfo("studyId") val studyId: Int,
     @ColumnInfo("category") val category: String
 )

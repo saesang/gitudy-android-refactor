@@ -13,5 +13,5 @@ class TodoSummaryEntity(
     @ColumnInfo("deadline") val deadline: String,
     @ColumnInfo("completeMemberCount") val completeMemberCount: Int,
     @ColumnInfo("totalMemberCount") val totalMemberCount: Int,
-    @ColumnInfo("myStatus") val myStatus: TodoStatus
+    @ColumnInfo("myStatus") val myStatus: String
 )

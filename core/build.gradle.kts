@@ -1,9 +1,14 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
+
+val properties = Properties()
+properties.load(project.rootProject.file("local.properties").inputStream())
 
 android {
     namespace = "com.takseha.core"
@@ -14,9 +19,13 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        buildConfigField("String", "GITUDY_BASE_URL", properties.getProperty("GITUDY_BASE_URL"))
+    }
+    buildFeatures {
+        buildConfig = true
     }
 
-    buildTypes {
+        buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -58,4 +67,8 @@ dependencies {
     // room
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+
+    // dataStore
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.androidx.datastore.preferences)
 }

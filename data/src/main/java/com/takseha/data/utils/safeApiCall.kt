@@ -1,7 +1,7 @@
 package com.takseha.data.utils
 
 import com.takseha.data.mapper.exception.ExceptionToFailureMapper
-import com.takseha.domain.model.common.Failure
+import com.takseha.domain.model.common.ServerFailure
 import retrofit2.Response
 
 suspend fun <T, R> safeApiCall(
@@ -18,11 +18,11 @@ suspend fun <T, R> safeApiCall(
                 val statusCode = response.code()
                 val errorDesc = "HTTP Error($statusCode)"
 
-                throw Failure.ServerFailure(Exception(errorDesc))
+                throw ServerFailure(Exception(errorDesc))
             }
 
             body == null -> {   // null 반환
-                throw Failure.ServerFailure(Exception("null 반환"))
+                throw ServerFailure(Exception("null 반환"))
             }
 
             else -> {

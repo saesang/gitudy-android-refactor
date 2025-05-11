@@ -5,7 +5,6 @@ import com.takseha.domain.model.mystudy.MyStudyDetail
 import com.takseha.domain.model.mystudy.MyStudyMember
 import com.takseha.domain.model.mystudy.MyStudySummary
 import com.takseha.domain.model.mystudy.TodoSummary
-import com.takseha.domain.model.mystudy.applicant.StudyApplicant
 import com.takseha.domain.model.study.StudyRank
 
 interface MyStudyRepository {
@@ -38,20 +37,4 @@ interface MyStudyRepository {
     suspend fun updateMyStudyComment(studyId: Int, studyCommentId: Int, comment: String)
     /** 커뮤니티 글 삭제 */
     suspend fun deleteMyStudyComment(studyId: Int, studyCommentId: Int)
-
-    /** 스터디 신청자 목록 확인 */
-    suspend fun getStudyApplications(cursorIdx: Long?, limit: Long, studyId: Int): List<StudyApplicant>?
-    suspend fun fetchStudyApplications(cursorIdx: Long?, limit: Long, studyId: Int): List<StudyApplicant>
-
-    /** 스터디 신청 승인/거절 */
-    suspend fun respondToStudyApplication(studyId: Int, applicantId: Int, isAccepted: Boolean)
-
-    /** 스터디 탈퇴 */
-    suspend fun withdrawFromStudy(studyId: Int)
-
-    /** 스터디 종료 */
-    suspend fun endStudy(studyId: Int)
-
-    /** 스터디 삭제 */
-    suspend fun deleteStudy(studyId: Int)
 }

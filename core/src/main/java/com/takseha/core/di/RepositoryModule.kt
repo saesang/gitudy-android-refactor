@@ -1,5 +1,6 @@
 package com.takseha.core.di
 
+import com.takseha.data.repositoryimpl.MyStudyRepositoryImpl
 import com.takseha.domain.repository.AuthRepository
 import com.takseha.domain.repository.CommitRepository
 import com.takseha.domain.repository.MyStudyRepository
@@ -22,8 +23,11 @@ abstract class RepositoryModule {
 //    @Binds
 //    abstract fun CommitRepository(repositoryImpl: CommitRepositoryImpl): CommitRepository
 //
+    @Binds
+    abstract fun MyStudyRepository(repositoryImpl: MyStudyRepositoryImpl): MyStudyRepository
+//
 //    @Binds
-//    abstract fun MyStudyRepository(repositoryImpl: MyStudyRepositoryImpl): MyStudyRepository
+//    abstract fun MyStudySettingRepository(repository: MyStudySettingRepositoryImpl): MyStudySettingRepository
 //
 //    @Binds
 //    abstract fun NotificationRepository(repository: NotificationRepositoryImpl): NotificationRepository

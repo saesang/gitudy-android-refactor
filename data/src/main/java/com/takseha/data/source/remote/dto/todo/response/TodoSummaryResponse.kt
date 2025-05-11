@@ -2,7 +2,7 @@ package com.takseha.data.source.remote.dto.todo.response
 
 
 import com.google.gson.annotations.SerializedName
-import com.takseha.data.dto.mystudy.TodoStatus
+import com.takseha.domain.model.mystudy.TodoStatus
 
 data class TodoSummaryResponse(
     @SerializedName("complete_member_count")

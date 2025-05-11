@@ -2,13 +2,15 @@ package com.takseha.data.mapper.mystudy
 
 import com.takseha.data.source.local.entity.mystudy.applicant.StudyApplicantEntity
 import com.takseha.data.source.remote.dto.mystudy.response.StudyApplicantResponse
+import com.takseha.data.source.remote.dto.study.response.StudiesResponse
+import com.takseha.domain.model.mystudy.MyStudySummary
 import com.takseha.domain.model.mystudy.applicant.StudyApplicant
 import com.takseha.domain.model.profile.SocialInfo
 
 object StudyApplicantsMapper {
     /** dto -> entity */
-    fun toEntity(studyId: Int, dto: List<StudyApplicantResponse>): List<StudyApplicantEntity> =
-        dto.map {
+    fun toEntities(studyId: Int, dtos: List<StudyApplicantResponse>): List<StudyApplicantEntity> =
+        dtos.map {
             StudyApplicantEntity(
                 id = it.id,
                 studyId = studyId,
@@ -25,8 +27,8 @@ object StudyApplicantsMapper {
         }
 
     /** model -> entity */
-    fun toEntity(studyId: Int, model: List<StudyApplicant>): List<StudyApplicantEntity> =
-        model.map {
+    fun toEntities(studyId: Int, models: List<StudyApplicant>): List<StudyApplicantEntity> =
+        models.map {
             StudyApplicantEntity(
                 id = it.id,
                 studyId = studyId,
@@ -43,18 +45,38 @@ object StudyApplicantsMapper {
         }
 
     /** entity -> model */
-    fun toDomain(entity: StudyApplicantEntity): StudyApplicant = StudyApplicant(
-        id = entity.id,
-        name = entity.name,
-        githubId = entity.githubId,
-        profileUrl = entity.profileUrl,
-        profilePublicYn = entity.profilePublicYn,
-        signGreeting = entity.signGreeting,
-        appliedAt = entity.appliedAt,
-        socialInfo = SocialInfo(
-            githubLink = entity.githubLink,
-            blogLink = entity.blogLink,
-            linkedInLink = entity.linkedInLink
+    fun toModels(entities: List<StudyApplicantEntity>): List<StudyApplicant> = entities.map {
+        StudyApplicant(
+            id = it.id,
+            name = it.name,
+            githubId = it.githubId,
+            profileUrl = it.profileUrl,
+            profilePublicYn = it.profilePublicYn,
+            signGreeting = it.signGreeting,
+            appliedAt = it.appliedAt,
+            socialInfo = SocialInfo(
+                githubLink = it.githubLink,
+                blogLink = it.blogLink,
+                linkedInLink = it.linkedInLink
+            )
         )
-    )
+    }
+
+    /** dto -> model */
+    fun toModels(dtos: List<StudyApplicantResponse>): List<StudyApplicant> = dtos.map {
+        StudyApplicant(
+            id = it.id,
+            name = it.name,
+            githubId = it.githubId,
+            profileUrl = it.profileImageUrl,
+            profilePublicYn = it.profilePublicYn,
+            signGreeting = it.joinReason,
+            appliedAt = it.createdDateTime,
+            socialInfo = SocialInfo(
+                githubLink = it.socialInfo?.githubLink,
+                blogLink = it.socialInfo?.blogLink,
+                linkedInLink = it.socialInfo?.linkedInLink
+            )
+        )
+    }
 }

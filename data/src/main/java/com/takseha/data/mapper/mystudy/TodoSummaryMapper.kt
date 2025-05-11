@@ -31,7 +31,7 @@ object TodoSummaryMapper {
         )
 
     /** entity -> model */
-    fun toDomain(entity: TodoSummaryEntity): TodoSummary = TodoSummary(
+    fun toModel(entity: TodoSummaryEntity): TodoSummary = TodoSummary(
         id = entity.id,
         studyId = entity.studyId,
         title = entity.title,
@@ -40,4 +40,18 @@ object TodoSummaryMapper {
         totalMemberCount = entity.totalMemberCount,
         myStatus = TodoStatus.from(entity.myStatus)
     )
+
+    /** dto -> model */
+    fun toModel(dto: TodoSummaryResponse): TodoSummary? =
+        if (dto.todo != null) {
+            TodoSummary(
+                id = dto.todo.id,
+                studyId = dto.todo.studyInfoId,
+                title = dto.todo.title,
+                deadline = dto.todo.todoDate,
+                completeMemberCount = dto.completeMemberCount,
+                totalMemberCount = dto.totalMemberCount,
+                myStatus = dto.myStatus
+            )
+        } else null
 }

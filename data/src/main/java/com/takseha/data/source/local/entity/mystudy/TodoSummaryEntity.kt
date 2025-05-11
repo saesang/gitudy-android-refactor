@@ -3,7 +3,6 @@ package com.takseha.data.source.local.entity.mystudy
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.takseha.domain.model.mystudy.TodoStatus
 
 @Entity(tableName = "TodoSummary")
 class TodoSummaryEntity(

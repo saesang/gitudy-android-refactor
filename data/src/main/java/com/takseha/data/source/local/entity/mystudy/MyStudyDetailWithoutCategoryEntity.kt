@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "MyStudyDetail")
-class MyStudyDetailEntity(
+class MyStudyDetailWithoutCategoryEntity(
     @PrimaryKey val id: Int,
     @ColumnInfo("studyName") val studyName: String,
     @ColumnInfo("info") val info: String,

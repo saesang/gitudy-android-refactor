@@ -4,7 +4,11 @@ import android.database.sqlite.SQLiteConstraintException
 import android.database.sqlite.SQLiteException
 import com.google.gson.JsonParseException
 import com.google.gson.JsonSyntaxException
+import com.takseha.domain.model.common.DatabaseFailure
 import com.takseha.domain.model.common.Failure
+import com.takseha.domain.model.common.NetworkFailure
+import com.takseha.domain.model.common.ServerFailure
+import com.takseha.domain.model.common.UnexpectedDataFailure
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -17,22 +21,22 @@ class ExceptionToFailureMapper {
             return when (e) {
                 /** 서버 관련 오류 */
                 is ConnectException, is SocketTimeoutException, is HttpException -> {
-                    Failure.ServerFailure(e)
+                    ServerFailure(e)
                 }
 
                 /** 인터넷 연결 실패 */
                 is TimeoutException, is UnknownHostException -> {
-                    Failure.NetworkFailure(e)
+                    NetworkFailure(e)
                 }
 
                 /** db 오류 */
                 is JsonSyntaxException, is JsonParseException, is SQLiteConstraintException, is SQLiteException -> {
-                    Failure.DatabaseFailure(e)
+                    DatabaseFailure(e)
                 }
 
                 /** 기타 Data Layer 오류 */
                 else -> {
-                    Failure.UnexpectedDataFailure(e)
+                    UnexpectedDataFailure(e)
                 }
             }
         }

@@ -1,14 +1,13 @@
-package com.takseha.data.source.local.entity.mystudy
+package com.takseha.data.source.local.entity.study
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "MyStudyCategory",
+    tableName = "StudyCategory",
     primaryKeys = ["studyId", "category"]
 )
-class MyStudyCategoryEntity(
+class StudyCategoryEntity(
     @ColumnInfo("studyId") val studyId: Int,
     @ColumnInfo("category") val category: String
 )

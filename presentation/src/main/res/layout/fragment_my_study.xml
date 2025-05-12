@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.mystudy.MyStudyFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <ImageView
+                android:id="@+id/studyImg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="207dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_mystudy_full_default" />
+
+            <ImageView
+                android:id="@+id/backBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@color/WHITE"
+                tools:ignore="UseAppTint" />
+
+            <ImageView
+                android:id="@+id/settingBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="22dp"
+                android:src="@drawable/ic_setting"
+                android:tint="@color/WHITE"
+                tools:ignore="UseAppTint" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                app:layout_constraintTop_toBottomOf="@+id/studyImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="22dp">
+
+                <TextView
+                    android:id="@+id/studyName"
+                    style="@style/B1_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/GS_800" />
+
+                <TextView
+                    android:id="@+id/leaderTag"
+                    style="@style/B6_2"
+                    app:layout_constraintStart_toEndOf="@+id/studyName"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/box_non_stroke_r24"
+                    android:backgroundTint="@color/BASIC_BLUE"
+                    android:gravity="center"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:text="팀장"
+                    android:textColor="@color/WHITE"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/studyEndTag"
+                    style="@style/B6_2"
+                    app:layout_constraintStart_toEndOf="@+id/studyName"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/box_non_stroke_r24"
+                    android:backgroundTint="@color/GS_300"
+                    android:gravity="center"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:text="종료"
+                    android:textColor="@color/GS_500"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/studyRule"
+                    style="@style/B6_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/studyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/GS_700" />
+
+                <TextView
+                    android:id="@+id/studyInfo"
+                    style="@style/B7_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/studyRule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/GS_600" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tagList"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/studyInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:nestedScrollingEnabled="true"
+                    android:orientation="horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/divider1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tagList"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#F8F8F8"
+                    android:orientation="horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/isStudyOpen"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="33dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_lock" />
+
+                    <TextView
+                        android:id="@+id/isStudyOpenText"
+                        style="@style/B6_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/GS_600" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/studyRank"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/isStudyOpen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_rank" />
+
+                    <TextView
+                        android:id="@+id/studyRankText"
+                        style="@style/B6_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/GS_600" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/studyGithubLink"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/studyRank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_study_github_link" />
+
+                    <TextView
+                        android:id="@+id/studyGithubLinkText"
+                        style="@style/B6_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/GS_600" />
+
+                    <TextView
+                        android:id="@+id/copyBtn"
+                        style="@style/B7_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="@string/copy"
+                        android:textColor="@color/BASIC_BLUE" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/divider2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/studyGithubLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#F8F8F8"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:id="@+id/todoTitle"
+                    style="@style/B2_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="TO-DO"
+                    android:textColor="@color/GS_900" />
+
+                <ImageView
+                    android:id="@+id/todoInfoBtn"
+                    app:layout_constraintStart_toEndOf="@+id/todoTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="37dp"
+                    android:src="@drawable/ic_info" />
+
+                <TextView
+                    android:id="@+id/todoInfoText"
+                    style="@style/B7_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/todoTitle"
+                    android:layout_width="270dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/box_stroke_200_r8"
+                    android:elevation="2dp"
+                    android:gravity="center_vertical"
+                    android:padding="13dp"
+                    android:text="@string/study_to_do_info"
+                    android:textColor="@color/GS_400"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/todoMoreBtn"
+                    style="@style/B6_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="39dp"
+                    android:text="전체보기"
+                    android:textColor="@color/GS_500" />
+
+                <LinearLayout
+                    android:id="@+id/todoLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/todoTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/todoBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/box_non_stroke_r12"
+                        android:backgroundTint="#F8F8FB"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="17dp"
+                        android:paddingTop="23dp"
+                        android:paddingRight="17dp"
+                        android:paddingBottom="23dp">
+
+                        <TextView
+                            android:id="@+id/noTodoAlarm"
+                            style="@style/B6_1"
+                            app:layout_constraintStart_toEndOf="@+id/todoImg"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/study_to_do_empty"
+                            android:textColor="@color/BASIC_RED"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/todoImg"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_todo_git" />
+
+                        <LinearLayout
+                            android:id="@+id/todoDetailLayout"
+                            app:layout_constraintStart_toEndOf="@+id/todoImg"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/todoDetailTitle"
+                                    style="@style/B6_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="4dp"
+                                    android:textColor="@color/GS_700" />
+
+                                <ImageView
+                                    android:id="@+id/todoLinkBtn"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:src="@drawable/ic_link"
+                                    android:tint="#7A808D"
+                                    tools:ignore="UseAppTint" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    style="@style/B7_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="4dp"
+                                    android:text="@string/to_do_deadline"
+                                    android:textColor="@color/GS_500" />
+
+                                <TextView
+                                    android:id="@+id/todoTime"
+                                    style="@style/B7_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="4dp"
+                                    android:textColor="@color/BASIC_BLUE" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/todoDetailText"
+                            style="@style/B7_2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/todoDetailLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="5dp"
+                            android:textColor="@color/GS_500"
+                            android:visibility="visible" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rankingListInTeam"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:nestedScrollingEnabled="false" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/divider3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/todoLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#F8F8F8"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:id="@+id/commentListTitle"
+                    style="@style/B2_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/study_comment_title"
+                    android:textColor="@color/GS_900" />
+
+                <TextView
+                    android:id="@+id/commentMoreBtn"
+                    style="@style/B6_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="39dp"
+                    android:text="전체보기"
+                    android:textColor="@color/GS_500" />
+
+                <TextView
+                    android:id="@+id/isNoCommentLayout"
+                    style="@style/B6_2"
+                    app:layout_constraintBottom_toTopOf="@+id/newCommentLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/studyName"
+                    app:layout_constraintTop_toBottomOf="@+id/commentListTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="아직 등록된 글이 없어요"
+                    android:textColor="@color/GS_400"
+                    android:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commentList"
+                    app:layout_constraintBottom_toTopOf="@+id/newCommentLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/commentListTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:minHeight="200dp"
+                    android:nestedScrollingEnabled="false" />
+
+                <LinearLayout
+                    android:id="@+id/newCommentLayout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/faded_edge"
+                    android:gravity="bottom"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/newCommentBox"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/box_non_stroke_r8"
+                        android:backgroundTint="#F3F5F7"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="16dp">
+
+                        <EditText
+                            android:id="@+id/newCommentBody"
+                            style="@style/B6_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:focusableInTouchMode="true"
+                            android:gravity="top|start"
+                            android:hint="팀원들에게 응원의 한마디를 남겨보세요!\n(100자 이내)"
+                            android:imeOptions="actionDone"
+                            android:inputType="textMultiLine"
+                            android:maxLength="100"
+                            android:maxLines="2"
+                            android:overScrollMode="always"
+                            android:paddingBottom="10dp"
+                            android:scrollbars="vertical"
+                            android:scrollHorizontally="false"
+                            android:textColor="@color/GS_900"
+                            android:textColorHint="@color/GS_500" />
+                    </LinearLayout>
+
+
+                    <Button
+                        android:id="@+id/postBtn"
+                        style="@style/B6_2"
+                        android:layout_width="69dp"
+                        android:layout_height="38dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/selector_btn_r8_enable"
+                        android:enabled="false"
+                        android:text="@string/post"
+                        android:textColor="@drawable/selector_text_color_enable" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

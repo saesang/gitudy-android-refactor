@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Gitudy"
         tools:targetApi="31">
         <activity
-            android:name="com.takseha.presentation.SplashActivity"
+            android:name="com.takseha.presentation.view.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

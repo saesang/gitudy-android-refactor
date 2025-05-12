@@ -32,6 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    dataBinding {
+        enable = true
+    }
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -60,4 +66,7 @@ dependencies {
     // coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+
+    // swipeRefreshLayout
+    implementation(libs.androidx.swiperefreshlayout)
 }
